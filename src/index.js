@@ -9,8 +9,8 @@ const App = () => {
   const [apiChange, setApiChange] = useState(false);
 
   const addBook = async (payload) => {
-    const postSuccess = await booksRepository.addBook(payload);
-    if (postSuccess) {
+    const isPostSuccess = await booksRepository.addBook(payload);
+    if (isPostSuccess) {
       setApiChange(() => !apiChange);
     }
   };
