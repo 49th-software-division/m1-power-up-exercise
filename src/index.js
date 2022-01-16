@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BooksPresenter } from './books/BooksPresenter';
 import { booksRepository } from './books/BooksRepository';
-
-const hardcodedBook = { name: 'The Silmarillion', author: 'J.R.R. Tolkien' };
+import { generateBook } from './books/generateBook';
 
 const App = () => {
   const [vm, copyVmToComponentState] = useState([]);
@@ -30,7 +29,13 @@ const App = () => {
       {vm.map((bookVm, i) => {
         return <div key={i}>{bookVm.visibleName}</div>;
       })}
-      <button onClick={() => addBook(hardcodedBook)}>Add Book</button>
+      <button
+        onClick={() =>
+          addBook(generateBook('The Silmarillion', 'J.R.R. Tolkien'))
+        }
+      >
+        Add Book
+      </button>
     </div>
   );
 };
