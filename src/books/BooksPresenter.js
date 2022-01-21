@@ -8,4 +8,11 @@ export class BooksPresenter {
     }); //> define the view model including only the things needed for display
     return booksVm; // return vm to component
   };
+
+  addBook = async (payload, apiChange, setApiChange) => {
+    const isPostSuccess = await booksRepository.addBook(payload);
+    if (isPostSuccess) {
+      setApiChange(() => !apiChange);
+    }
+  };
 }

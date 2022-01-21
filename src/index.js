@@ -1,19 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BooksPresenter } from './books/BooksPresenter';
-import { booksRepository } from './books/BooksRepository';
 import { generateBook } from './books/generateBook';
 
 const App = () => {
   const [vm, copyVmToComponentState] = useState([]);
   const [apiChange, setApiChange] = useState(false);
-
-  const addBook = async (payload) => {
-    const isPostSuccess = await booksRepository.addBook(payload);
-    if (isPostSuccess) {
-      setApiChange(() => !apiChange);
-    }
-  };
 
   useEffect(() => {
     const load = async () => {
@@ -31,7 +23,11 @@ const App = () => {
       })}
       <button
         onClick={() =>
-          addBook(generateBook('The Silmarillion', 'J.R.R. Tolkien'))
+          new BooksPresenter().addBook(
+            generateBook('The Silmarillion', 'J.R.R. Tolkien'),
+            apiChange,
+            setApiChange,
+          )
         }
       >
         Add Book
