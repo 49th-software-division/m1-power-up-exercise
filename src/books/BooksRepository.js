@@ -18,11 +18,11 @@ class BooksRepository {
   };
 
   addBook = async (payload) => {
-    const bookDto = await this.httpGateway.post(path, payload); //> ping the api with the new book
-    if (bookDto.success) {
+    const newBookDto = await this.httpGateway.post(path, payload); //> ping the api with the new book
+    if (newBookDto.success) {
       this.booksPm.push({ name: payload.name }); //> if the addition was successful, edit "state"
     }
-    return bookDto.success; //> return the success to the component so the component can fetch all the books
+    return newBookDto.success; //> return the success to the component so the component can fetch all the books
   };
 }
 

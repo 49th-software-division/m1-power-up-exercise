@@ -9,10 +9,8 @@ export class BooksPresenter {
     return booksVm; // return vm to component
   };
 
-  addBook = async (payload, apiChange, setApiChange) => {
+  addBook = async (payload) => {
     const isPostSuccess = await booksRepository.addBook(payload);
-    if (isPostSuccess) {
-      setApiChange(() => !apiChange);
-    }
+    return isPostSuccess;
   };
 }
