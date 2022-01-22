@@ -1,6 +1,6 @@
 import { HttpGateway } from '../shared/HttpGateway';
 import { apiPath } from '../shared/apiPath';
-const path = apiPath('ajones@ximasoftware.com');
+const path = apiPath('test@test.com');
 
 // the repository is purposely a singleton, usually
 class BooksRepository {
